@@ -1,0 +1,15 @@
+# ---- Secrets: NEVER push API keys to GitHub ----
+.env
+
+# ---- Python ----
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ---- Database ----
+database/*.db
+
+# ---- OS / editor junk ----
+Thumbs.db
+.DS_Store

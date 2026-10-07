@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Syntax highlighting theme (code blocks are always dark) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+
+    <!-- Our stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- ============ SIDEBAR (chat history) ============ -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+            <span class="logo">⚡ AI Chatbot</span>
+            <button class="icon-btn close-sidebar-btn" id="closeSidebarBtn" title="Close menu">✕</button>
+        </div>
+
+        <button class="new-chat-btn" id="newChatBtn">
+            <span>＋</span> New Chat
+        </button>
+
+        <div class="sidebar-label">History</div>
+
+        <nav class="chat-list" id="chatList">
+            <!-- Chat items will be added here by JavaScript (Step 5) -->
+            <p class="chat-list-empty" id="chatListEmpty">No conversations yet.</p>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="theme-toggle" id="themeToggle" title="Switch theme">
+                <span id="themeIcon">☀️</span>
+                <span id="themeText">Light mode</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Dim overlay when sidebar is open on mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+
+    <!-- ============ MAIN AREA ============ -->
+    <main class="main">
+
+        <header class="topbar">
+            <button class="icon-btn menu-btn" id="menuBtn" title="Open menu">☰</button>
+            <h1 class="topbar-title" id="topbarTitle">AI Chatbot</h1>
+            <button class="icon-btn" id="topNewChatBtn" title="New chat">✏️</button>
+        </header>
+
+        <!-- ---------- Messages ---------- -->
+        <section class="messages" id="messages">
+
+            <div class="empty-state" id="emptyState">
+                <div class="empty-icon">🤖</div>
+                <h2>How can I help you today?</h2>
+                <p>Ask me anything — code, writing, explanations and more.</p>
+                <div class="suggestions">
+                    <button class="suggestion-chip">Explain Python loops simply</button>
+                    <button class="suggestion-chip">Write hello world in JavaScript</button>
+                    <button class="suggestion-chip">What is a REST API?</button>
+                </div>
+            </div>
+
+            <!-- Typing indicator (shown while waiting for AI) -->
+            <div class="message assistant typing-indicator hidden" id="typingIndicator">
+                <div class="avatar">🤖</div>
+                <div class="bubble">
+                    <div class="dots"><span></span><span></span><span></span></div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ---------- Input box ---------- -->
+        <footer class="input-area">
+            <form class="input-form" id="chatForm" autocomplete="off">
+                <textarea
+                    id="messageInput"
+                    rows="1"
+                    maxlength="4000"
+                    placeholder="Message AI Chatbot..."></textarea>
+                <button type="submit" class="send-btn" id="sendBtn" title="Send message" disabled>
+                    ➤
+                </button>
+            </form>
+            <div class="input-hint">Enter to send · Shift + Enter for new line</div>
+        </footer>
+
+    </main>
+</div>
+
+<!-- Libraries used by chat logic (Step 5) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+
+<!-- Our JavaScript -->
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

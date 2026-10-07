@@ -1,0 +1,7 @@
+# Python packages needed for the chatbot backend.
+# Install everything with:
+#     pip install -r requirements.txt
+
+flask
+python-dotenv
+requests
